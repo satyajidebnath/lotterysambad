@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lottery Sambad</title>
+<style>body{margin:0;background:#eef2f6;color:#172638;font:16px/1.5 system-ui}main{max-width:1000px;margin:auto;padding:28px 18px}h1{margin:0}img{display:block;width:100%;height:auto;background:white;box-shadow:0 5px 25px #17263818}figure{margin:24px 0}figcaption{padding:8px;color:#526579}a{color:#175cce}#status{padding:14px;background:white;border-radius:8px}</style></head>
+<body><main><h1>Lottery Sambad</h1><p id="date">Daily result images</p><p id="status" role="status">Loading result...</p><a id="original" hidden target="_blank" rel="noopener noreferrer">Open original PDF</a><section id="pages" aria-label="Result images"></section><noscript>Enable JavaScript to view the results.</noscript></main>
+<script>
+(()=>{
+ const status=document.querySelector('#status');
+ let busy=false,current='',imageFailed=false;
+ async function refresh(){
+ if(busy||document.hidden)return;
+ busy=true;
+ try {
+  if(location.protocol==='file:')throw Error('Open the deployed website to view the result images.');
+  const response=await fetch('/result.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});
+  if(!response.ok){const info=await response.json().catch(()=>({}));throw Error(info.error||'Result images are unavailable. Please check again later.');}
+  const result=await response.json();
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(result.date)||!Array.isArray(result.pages)||!result.pages.length||result.pages.length>10||!result.pages.every(page=>new RegExp(`^/images/results/${result.date}/page-[1-9][0-9]*\\.png$`).test(page.src)&&Number.isInteger(page.width)&&page.width>0&&page.width<=1800&&Number.isInteger(page.height)&&page.height>0&&page.height<=1800))throw Error('The result data is invalid. Please check again later.');
+  const source=new URL(result.source);
+  if(source.protocol!=='https:'||source.hostname!=='www.lotterysambad.com')throw Error('The result source is invalid.');
+  const version=JSON.stringify(result);
+  if(version!==current||imageFailed){
+  current=version;imageFailed=false;
+  document.querySelector('#pages').replaceChildren();
+  document.querySelector('#date').textContent=`Result date: ${result.date} (India time)`;
+  const link=document.querySelector('#original');link.href=source.href;link.hidden=false;
+  for(const [index,page] of result.pages.entries()){
+   const figure=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');
+   img.src=page.src;img.alt=`Lottery Sambad result, page ${index+1}`;img.width=page.width;img.height=page.height;
+   img.loading=index===0?'eager':'lazy';
+   img.addEventListener('error',()=>{imageFailed=true;status.textContent='An image could not load. Retrying shortly. You can also open the original PDF.';});
+   caption.textContent=`Page ${index+1} of ${result.pages.length}`;figure.append(img,caption);document.querySelector('#pages').append(figure);
+  }
+  }
+  const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const get=t=>parts.find(p=>p.type===t).value;const today=`${get('year')}-${get('month')}-${get('day')}`;
+  if(!imageFailed)status.textContent=today===result.date?'Today’s result':'Showing the latest published result. Today’s result is pending.';
+ }catch(error){status.textContent=(current?'Showing the saved result. ':'')+(error.name==='TimeoutError'?'The request timed out. Retrying shortly.':error.message);}
+ finally{busy=false;}
+ }
+ refresh();
+ if(location.protocol!=='file:'){
+  setInterval(refresh,60000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+ }
+})();
+</script></body></html>

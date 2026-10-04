@@ -1,0 +1,9 @@
+node_modules/
+public/
+.npm-cache/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+test-artifacts/
