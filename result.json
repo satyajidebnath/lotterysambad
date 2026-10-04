@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "timeZone": "Asia/Kolkata",
   "draws": [
     {
@@ -7,7 +7,7 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-04",
         "filename": "MN041026.PDF",
@@ -29,7 +29,7 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-04",
         "draw": "DN",
@@ -51,7 +51,7 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-04",
         "draw": "EN",
@@ -69,5 +69,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-04T17:42:40.042Z"
+  "updatedAt": "2026-10-04T20:23:13.118Z"
 }
