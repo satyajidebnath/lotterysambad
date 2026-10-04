@@ -1,28 +1,25 @@
 name: Publish daily lottery results
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '17 * * * *'
-
+    # MN 1:10 PM, DN 6:10 PM and EN 8:10 PM IST.
+    - cron: '40 7 * * *'
+    - cron: '40 12 * * *'
+    - cron: '40 14 * * *'
+    # Resume interrupted polls. Completed draws do not request their source again.
+    - cron: '40 8,9,10,11,13,15,16,17 * * *'
 permissions:
-  contents: read
+  contents: write
   pages: write
-  id-token: write
-
 concurrency:
-  group: lottery-pages
+  group: lottery-downloader
   cancel-in-progress: false
-
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -31,24 +28,19 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run check
-      - name: Restore saved PDF and result images
-        uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v4
         with:
           path: .result-cache
-          key: lottery-results-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: lottery-results-
-      - name: Build result images and website
-        run: npm run build:pages
-      - name: Save PDF and result images for retries
+          key: lottery-results-v2-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: lottery-results-v2-
+      - name: Publish waiting messages and poll missing PDFs every 10 seconds
+        run: npm run build:pages -- --watch --publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Preserve downloaded PDFs and completed results
         if: always()
         uses: actions/cache/save@v4
         with:
           path: .result-cache
-          key: lottery-results-${{ github.run_id }}-${{ github.run_attempt }}
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .site
-      - name: Publish GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          key: lottery-results-v2-${{ github.run_id }}-${{ github.run_attempt }}

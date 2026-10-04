@@ -1,6 +1,6 @@
 {
  "name":"lottery-sambad-cloudflare","private":true,"type":"module",
- "scripts":{"build":"node scripts/prepare-assets.mjs","build:pages":"node scripts/build-pages.mjs","dev":"npm run build && wrangler dev","deploy":"npm run build && wrangler deploy","check":"node --test tests/worker.test.mjs","check:browser":"npm run build && node scripts/browser-check.mjs","dry-run":"npm run build && wrangler deploy --dry-run"},
+ "scripts":{"build":"node scripts/prepare-assets.mjs","build:pages":"node scripts/build-pages.mjs","dev":"npm run build && wrangler dev","deploy":"npm run build && wrangler deploy","check":"node --test tests/worker.test.mjs","check:browser":"npm run build:pages && node scripts/browser-check.mjs","dry-run":"npm run build && wrangler deploy --dry-run"},
  "engines":{"node":">=22"},
  "dependencies":{"@cloudflare/puppeteer":"1.1.0"},"devDependencies":{"wrangler":"^4.0.0"}
 }

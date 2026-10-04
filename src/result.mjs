@@ -1,8 +1,8 @@
-export function todayResult(date=new Date()) {
- const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
- const get=t=>parts.find(p=>p.type===t).value;
- const filename=`MN${get('day')}${get('month')}${get('year').slice(-2)}.PDF`;
- return {date:`${get('year')}-${get('month')}-${get('day')}`,filename,source:`https://www.lotterysambad.com/fetchtoday.php?filename=${filename}`};
+import {DRAWS,indiaDateParts} from './draws.mjs';
+export function todayResult(date=new Date(),draw='MN') {
+ if(!DRAWS.some(item=>item.id===draw))throw Error('Unknown draw.');
+ const parts=indiaDateParts(date),filename=`${draw}${parts.stamp}.PDF`;
+ return {date:parts.date,draw,filename,source:`https://www.lotterysambad.com/fetchtoday.php?filename=${filename}`};
 }
 const MAX_PDF_BYTES=20*1024*1024;
 async function readPDF(response) {
@@ -27,15 +27,15 @@ function validatePDF(pdf) {
  if(pdf.byteLength>MAX_PDF_BYTES)throw Error('PDF exceeds 20 MB limit.');
  if(!new TextDecoder().decode(pdf.slice(0,1024)).includes('%PDF-'))throw Error("Today's PDF is not published yet.");
 }
-export async function updateResult(env,render,date=new Date()) {
- const today=todayResult(date),key=`results/${today.date}/result.json`;
+export async function updateResult(env,render,date=new Date(),draw='MN') {
+ const today=todayResult(date,draw),prefix=`results/${today.date}/${draw}`,key=`${prefix}/result.json`;
  const complete=await env.RESULTS.get(key);
  if(complete){
   const result=await complete.json();
-  await env.RESULTS.put('latest.json',JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
+  await env.RESULTS.put(`latest-${draw}.json`,JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
   return {status:'cached',date:today.date};
  }
- const pdfKey=`results/${today.date}/${today.filename}`;
+ const pdfKey=`${prefix}/${today.filename}`;
  const saved=await env.RESULTS.get(pdfKey);let pdf;
  if(saved)pdf=await saved.arrayBuffer();
  else {
@@ -54,13 +54,29 @@ export async function updateResult(env,render,date=new Date()) {
  }
  const pages=[];
  for(const [index,image] of images.entries()) {
-  const imageKey=`results/${today.date}/page-${index+1}.png`;
+  const imageKey=`${prefix}/page-${index+1}.png`;
   await env.RESULTS.put(imageKey,image.bytes,{httpMetadata:{contentType:'image/png',cacheControl:'public, max-age=31536000, immutable'}});
   pages.push({src:`/images/${imageKey}`,width:image.width,height:image.height});
  }
  const result={...today,pages,updatedAt:new Date().toISOString()};
  // Publish only after every image is stored.
  await env.RESULTS.put(key,JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
- await env.RESULTS.put('latest.json',JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
+ await env.RESULTS.put(`latest-${draw}.json`,JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
  return {status:'updated',date:today.date,pages:pages.length};
+}
+export async function updateAllResults(env,render,date=new Date()){
+ const india=indiaDateParts(date),draws=[],updates=[];
+ for(const draw of DRAWS){
+  const due=india.time>=draw.downloadTime;
+  let error;
+  if(due){
+   try{updates.push({draw:draw.id,...await updateResult(env,render,date,draw.id)});}
+   catch(failure){error=failure.message;updates.push({draw:draw.id,status:'pending',error});console.warn(`${draw.id}: ${error}`);}
+  }else updates.push({draw:draw.id,status:'scheduled'});
+  const saved=await env.RESULTS.get(`latest-${draw.id}.json`),result=saved?await saved.json():null;
+  draws.push({...draw,status:result?.date===india.date?'ready':due?'pending':'scheduled',result});
+ }
+ const manifest={date:india.date,timeZone:'Asia/Kolkata',draws,updatedAt:date.toISOString()};
+ await env.RESULTS.put('latest.json',JSON.stringify(manifest),{httpMetadata:{contentType:'application/json'}});
+ return {status:updates.some(item=>item.status==='updated')?'updated':'cached',date:india.date,updates};
 }

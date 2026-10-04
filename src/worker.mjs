@@ -1,11 +1,20 @@
-import {updateResult} from './result.mjs';
+import {updateAllResults} from './result.mjs';
 import {renderPDF} from './render.mjs';
 function updater(env){return env.UPDATER.get(env.UPDATER.idFromName('daily-result'));}
 export class ResultUpdater {
- constructor(ctx,env){this.env=env;this.pending=null;}
+ constructor(ctx,env){this.ctx=ctx;this.env=env;this.pending=null;}
+ async run(){
+  if(!this.pending)this.pending=(async()=>{
+   const result=await updateAllResults(this.env,renderPDF);
+   if(result.updates.some(draw=>draw.status==='pending'))await this.ctx.storage?.setAlarm(Date.now()+10000);
+   else await this.ctx.storage?.deleteAlarm();
+   return result;
+  })().finally(()=>{this.pending=null;});
+  return this.pending;
+ }
+ async alarm(){await this.run();}
  async fetch(){
-  if(!this.pending)this.pending=updateResult(this.env,renderPDF).finally(()=>{this.pending=null;});
-  try{return Response.json(await this.pending);}
+  try{return Response.json(await this.run());}
   catch(error){console.error(error);return Response.json({error:error.message},{status:502});}
  }
 }
@@ -32,7 +41,7 @@ export default {
   }
   if(url.pathname.startsWith('/images/')){
    const key=url.pathname.slice('/images/'.length);
-   if(!/^results\/\d{4}-\d{2}-\d{2}\/page-\d+\.png$/.test(key))return new Response('Not found',{status:404});
+   if(!/^results\/\d{4}-\d{2}-\d{2}\/(MN\/|DN\/|EN\/)?page-\d+\.png$/.test(key))return new Response('Not found',{status:404});
    const cache=caches.default,cacheKey=new Request(url.toString(),{method:'GET'});
    const cached=await cache.match(cacheKey);
    if(cached)return imageResponse(request,cached);

@@ -4,9 +4,20 @@
 
 The public website is https://satyajidebnath.github.io/lotterysambad/.
 GitHub Pages serves static files, so `.github/workflows/pages.yml` downloads
-the daily PDF and renders its pages before publishing the site. The workflow
-runs on pushes to `main`, once an hour at minute 17 UTC, and manually from the
-Actions tab. GitHub schedules can be delayed; updates are not instantaneous.
+three daily PDFs and renders their pages before publishing the site. The workflow
+starts at **1:10 PM (MN), 6:10 PM (DN), and 8:10 PM (EN), all IST**, on pushes to
+`main`, and manually from the Actions tab. It polls missing PDFs every ten seconds
+while running, stops contacting a draw's source once its PDF has been saved,
+and stops retrying that day's missing results at midnight IST.
+
+The compact website shows all three draws, preserves each previous result, displays
+a waiting message for missing PDFs, and lets visitors enlarge an image without
+opening the original PDF. It refreshes result metadata every ten seconds.
+
+GitHub schedules can start late. Hosted jobs cannot run for more than six hours,
+so each polling run lasts at most 330 minutes; hourly recovery runs resume polling
+if needed. There can be a gap while GitHub starts the next run. GitHub Pages builds
+also take time, so a downloaded result does not appear instantly.
 
 The repository includes a generated result for the initial deployment.
 The workflow caches PDFs and PNGs between runs, avoids converting completed
@@ -15,9 +26,12 @@ Conversion runs in Chrome on the Actions runner; visitors never start it.
 Scheduled workflows in inactive public repositories can be disabled by GitHub
 after 60 days; check the Actions tab if automatic updates stop.
 
-In Settings → Pages, select **GitHub Actions** as the publishing source.
+In Settings → Pages, choose **Deploy from a branch**, branch **gh-pages**, root `/`.
+The workflow publishes static files to that branch and explicitly requests a
+Pages build whenever a result or its availability changes.
 No Cloudflare account or secrets are required for this hosting option.
-The `github-pages` environment must allow deployments from `main`.
+The workflow's built-in `GITHUB_TOKEN` needs Contents and Pages write access;
+the initial Pages source setting must be configured by a repository administrator.
 
 To generate the static site locally:
 
@@ -36,7 +50,7 @@ Do not open `index.html` directly using a `file:` URL.
 Cloudflare hosts the website, downloads each day's PDF, converts its pages into PNG
 using Browser Run and PDF.js, and stores the files in R2.
 Visitors load saved images; visiting the site never starts a conversion.
-The page checks for updated results every minute while visible and automatically
+The page checks for updated results every ten seconds while visible and automatically
 retries missing results or failed images. Existing images remain visible if a
 refresh fails.
 
@@ -62,7 +76,8 @@ PowerShell reports that running scripts is disabled.
 
 ## Generate the first result immediately
 
-The hourly schedule runs at minute 17 UTC. After deployment, run this PowerShell
+Each draw's schedule starts at its IST download time. Durable Object alarms retry
+missing PDFs every ten seconds until complete or until midnight. After deployment, run this PowerShell
 command with your actual website URL to avoid waiting:
 
 ```powershell
@@ -73,11 +88,13 @@ Invoke-RestMethod -Method Post -Uri 'https://lottery-sambad.YOUR-SUBDOMAIN.worke
 
 The endpoint returns `updated` or `cached`; refresh the website afterward.
 If the publisher has not uploaded today's PDF, or blocks Cloudflare requests, the
-update returns an error and the schedule retries. Inspect logs with `npx wrangler tail`.
+that draw remains pending and the alarm retries. Other draws can publish independently.
+Inspect logs with `npx wrangler tail`.
 
 ## How caching works
 
-The Worker generates MNDDMMYY.PDF from India's date. One Durable Object coalesces
+The Worker generates MNDDMMYY.PDF, DNDDMMYY.PDF and ENDDMMYY.PDF from India's date.
+One Durable Object coalesces
 overlapping updates. The validated PDF is saved before conversion, so failed
 conversions retry without downloading again. A completed daily manifest stops
 further conversions. Images become visible only after all pages have been saved.
@@ -85,7 +102,8 @@ The previous result remains online until the new one is ready. Images have
 date-specific URLs and edge caching.
 
 R2 retains daily files. Optionally expire the `results/` prefix after 30 days with
-an R2 lifecycle rule; keep `latest.json`. PDFs over 20 MB or ten pages are rejected.
+an R2 lifecycle rule; keep `latest.json` and `latest-MN.json`, `latest-DN.json`,
+`latest-EN.json`. PDFs over 20 MB or ten pages are rejected.
 The download stops when it exceeds the size limit, and conversion stops after
 120 seconds. Failed downloads and conversions never replace the published result.
 
@@ -117,9 +135,8 @@ For an additional local browser check, install Chrome and run:
 npm run check:browser
 ```
 
-This renders a test PDF with the production renderer and checks image display,
-automatic refresh, recovery from unavailable results, and invalid result data.
-Set `CHROME_PATH` if Chrome is installed elsewhere. To check the publisher's
-current PDF instead, run `npm run check:browser -- --live`.
+This builds the actual three-draw site and checks desktop/mobile layout, full-size
+viewing, automatic refresh, waiting messages, and invalid result data.
+Set `CHROME_PATH` if Chrome is installed elsewhere.
 Screenshots are saved to `test-artifacts/`. This check uses a local browser;
 it does not deploy anything or verify Cloudflare account bindings.

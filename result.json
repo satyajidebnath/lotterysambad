@@ -1,13 +1,70 @@
 {
   "date": "2026-10-04",
-  "filename": "MN041026.PDF",
-  "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN041026.PDF",
-  "pages": [
+  "timeZone": "Asia/Kolkata",
+  "draws": [
     {
-      "src": "images/results/2026-10-04/page-1.png",
-      "width": 1273,
-      "height": 1800
+      "id": "MN",
+      "label": "Morning",
+      "drawTime": "13:00",
+      "downloadTime": "13:10",
+      "status": "ready",
+      "result": {
+        "date": "2026-10-04",
+        "filename": "MN041026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN041026.PDF",
+        "pages": [
+          {
+            "src": "images/results/2026-10-04/MN/page-1.png",
+            "width": 1273,
+            "height": 1800
+          }
+        ],
+        "updatedAt": "2026-10-04T16:10:43.844Z",
+        "draw": "MN"
+      }
+    },
+    {
+      "id": "DN",
+      "label": "Evening",
+      "drawTime": "18:00",
+      "downloadTime": "18:10",
+      "status": "ready",
+      "result": {
+        "date": "2026-10-04",
+        "draw": "DN",
+        "filename": "DN041026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN041026.PDF",
+        "pages": [
+          {
+            "src": "images/results/2026-10-04/DN/page-1.png",
+            "width": 1273,
+            "height": 1800
+          }
+        ],
+        "updatedAt": "2026-10-04T16:54:51.959Z"
+      }
+    },
+    {
+      "id": "EN",
+      "label": "Night",
+      "drawTime": "20:00",
+      "downloadTime": "20:10",
+      "status": "ready",
+      "result": {
+        "date": "2026-10-04",
+        "draw": "EN",
+        "filename": "EN041026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN041026.PDF",
+        "pages": [
+          {
+            "src": "images/results/2026-10-04/EN/page-1.png",
+            "width": 1273,
+            "height": 1800
+          }
+        ],
+        "updatedAt": "2026-10-04T16:54:55.375Z"
+      }
     }
   ],
-  "updatedAt": "2026-10-04T16:10:43.844Z"
+  "updatedAt": "2026-10-04T16:57:26.165Z"
 }
