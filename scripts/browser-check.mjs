@@ -28,19 +28,20 @@ try {
  assert.ok(images.length>=1&&images.length<=10);
  for(const image of images){assert.equal(Buffer.from(image.bytes).subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.ok(image.width>0&&image.height>0&&image.width<=1800&&image.height<=1800);}
  await mkdir('test-artifacts',{recursive:true});await writeFile('test-artifacts/rendered-page.png',images[0].bytes);
- const today=todayResult(),result={...today,pages:images.map((image,index)=>({src:`/images/results/${today.date}/page-${index+1}.png`,width:image.width,height:image.height})),updatedAt:new Date().toISOString()};
+ const basePath=process.argv.includes('--project-path')?'/lotterysambad/':'/';
+ const today=todayResult(),result={...today,pages:images.map((image,index)=>({src:`${basePath==='/'?'/':''}images/results/${today.date}/page-${index+1}.png`,width:image.width,height:image.height})),updatedAt:new Date().toISOString()};
  let mode='ok';
  server=createServer(async(request,response)=>{
   try{
-   if(request.url==='/result.json'){response.setHeader('Content-Type','application/json');if(mode==='missing'){response.statusCode=503;response.end(JSON.stringify({error:'No result yet.'}));}else response.end(JSON.stringify(mode==='invalid'?{...result,pages:[]}:result));return;}
-   const image=result.pages.findIndex(page=>page.src===request.url);
+   if(request.url===`${basePath}result.json`){response.setHeader('Content-Type','application/json');if(mode==='missing'){response.statusCode=503;response.end(JSON.stringify({error:'No result yet.'}));}else response.end(JSON.stringify(mode==='invalid'?{...result,pages:[]}:result));return;}
+   const image=result.pages.findIndex(page=>new URL(page.src,`http://local${basePath}`).pathname===request.url);
    if(image>=0){response.setHeader('Content-Type','image/png');response.end(images[image].bytes);return;}
    response.setHeader('Content-Type','text/html');response.end(await readFile('public/index.html'));
   }catch(error){response.statusCode=500;response.end(error.message);}
  });
  await new Promise(done=>server.listen(0,'127.0.0.1',done));
  const page=await browser.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));
- const url=`http://127.0.0.1:${server.address().port}`;
+ const url=`http://127.0.0.1:${server.address().port}${basePath}`;
  await page.goto(url);await page.waitForFunction(()=>document.querySelector('#status').textContent==='Today’s result');
  await page.waitForFunction(()=>document.querySelector('#pages img')?.naturalWidth>0);
  assert.equal(await page.$$eval('#pages img',images=>images.length),images.length);

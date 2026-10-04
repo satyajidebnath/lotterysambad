@@ -1,4 +1,37 @@
-# Lottery Sambad — entirely on Cloudflare
+# Lottery Sambad
+
+## GitHub Pages
+
+The public website is https://satyajidebnath.github.io/lotterysambad/.
+GitHub Pages serves static files, so `.github/workflows/pages.yml` downloads
+the daily PDF and renders its pages before publishing the site. The workflow
+runs on pushes to `main`, once an hour at minute 17 UTC, and manually from the
+Actions tab. GitHub schedules can be delayed; updates are not instantaneous.
+
+The repository includes a generated result for the initial deployment.
+The workflow caches PDFs and PNGs between runs, avoids converting completed
+results again, and keeps the last result available if today's PDF is missing.
+Conversion runs in Chrome on the Actions runner; visitors never start it.
+Scheduled workflows in inactive public repositories can be disabled by GitHub
+after 60 days; check the Actions tab if automatic updates stop.
+
+In Settings → Pages, select **GitHub Actions** as the publishing source.
+No Cloudflare account or secrets are required for this hosting option.
+The `github-pages` environment must allow deployments from `main`.
+
+To generate the static site locally:
+
+```sh
+npm ci
+npm run build:pages
+```
+
+Serve the generated `.site/` directory with an HTTP server. Chrome is required
+for new PDF conversions; set `CHROME_PATH` if it is installed elsewhere.
+The page uses relative paths so it works under `/lotterysambad/`.
+Do not open `index.html` directly using a `file:` URL.
+
+## Optional Cloudflare hosting
 
 Cloudflare hosts the website, downloads each day's PDF, converts its pages into PNG
 using Browser Run and PDF.js, and stores the files in R2.
@@ -7,7 +40,7 @@ The page checks for updated results every minute while visible and automatically
 retries missing results or failed images. Existing images remain visible if a
 refresh fails.
 
-## Deploy
+### Deploy on Cloudflare
 
 Install Node.js 22+ and run these commands in this folder:
 

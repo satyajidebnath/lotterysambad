@@ -7,3 +7,7 @@ public/
 .env.*
 !.env.example
 test-artifacts/
+.result-cache/
+.site/
+github-publish/
+lottery-sambad-source.zip

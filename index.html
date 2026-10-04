@@ -11,10 +11,14 @@
  busy=true;
  try {
   if(location.protocol==='file:')throw Error('Open the deployed website to view the result images.');
-  const response=await fetch('/result.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});
+  const response=await fetch(new URL('result.json',location.href),{cache:'no-cache',signal:AbortSignal.timeout(15000)});
   if(!response.ok){const info=await response.json().catch(()=>({}));throw Error(info.error||'Result images are unavailable. Please check again later.');}
   const result=await response.json();
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(result.date)||!Array.isArray(result.pages)||!result.pages.length||result.pages.length>10||!result.pages.every(page=>new RegExp(`^/images/results/${result.date}/page-[1-9][0-9]*\\.png$`).test(page.src)&&Number.isInteger(page.width)&&page.width>0&&page.width<=1800&&Number.isInteger(page.height)&&page.height>0&&page.height<=1800))throw Error('The result data is invalid. Please check again later.');
+  const imagePrefix=new URL(`images/results/${result.date}/`,location.href).pathname;
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(result.date)||!Array.isArray(result.pages)||!result.pages.length||result.pages.length>10||!result.pages.every(page=>{
+   const imageURL=new URL(page.src,location.href);
+   return imageURL.origin===location.origin&&imageURL.pathname.startsWith(imagePrefix)&&/^page-[1-9][0-9]*\.png$/.test(imageURL.pathname.slice(imagePrefix.length))&&!imageURL.search&&!imageURL.hash&&Number.isInteger(page.width)&&page.width>0&&page.width<=1800&&Number.isInteger(page.height)&&page.height>0&&page.height<=1800;
+  }))throw Error('The result data is invalid. Please check again later.');
   const source=new URL(result.source);
   if(source.protocol!=='https:'||source.hostname!=='www.lotterysambad.com')throw Error('The result source is invalid.');
   const version=JSON.stringify(result);

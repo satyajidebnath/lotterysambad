@@ -1,0 +1,54 @@
+name: Publish daily lottery results
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: lottery-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run check
+      - name: Restore saved PDF and result images
+        uses: actions/cache/restore@v4
+        with:
+          path: .result-cache
+          key: lottery-results-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: lottery-results-
+      - name: Build result images and website
+        run: npm run build:pages
+      - name: Save PDF and result images for retries
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .result-cache
+          key: lottery-results-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .site
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
