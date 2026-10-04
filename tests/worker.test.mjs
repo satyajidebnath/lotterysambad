@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {todayResult,updateResult,updateAllResults} from '../src/result.mjs';
 import worker, {ResultUpdater} from '../src/worker.mjs';
 import {pollResults} from '../src/poll.mjs';
+import {firstPrize} from '../src/prize.mjs';
 function bucket(){
  const data=new Map();
  const metadata=new Map();
@@ -125,6 +126,10 @@ test('authorized update forwards to the Durable Object',async()=>{
 });
 test('all three filenames use the India date and their own prefix',()=>{
  for(const draw of ['MN','DN','EN'])assert.equal(todayResult(new Date('2026-12-31T19:00:00Z'),draw).filename,`${draw}010127.PDF`);
+});
+test('first prize comes from PDF text and preserves leading zeros',()=>{
+ assert.deepEqual(firstPrize([{text:'1st Prize 72A 07421 2nd Prize 12382'}]),{series:'72A',number:'07421'});
+ assert.equal(firstPrize([{text:'2nd prize 07421 12382'}]),null);
 });
 test('each draw starts at its own exact IST download time',async()=>{
  const env={RESULTS:bucket()},original=globalThis.fetch,downloads=[];

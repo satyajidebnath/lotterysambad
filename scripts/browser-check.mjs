@@ -30,20 +30,22 @@ try{
  browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-sandbox','--disable-gpu','--disable-software-rasterizer','--disable-gpu-sandbox'],userDataDir:resolve('test-artifacts/design-chrome')});
  const page=await browser.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));await page.setViewport({width:1280,height:900});
  await page.goto(`http://127.0.0.1:${server.address().port}${base}`);
- await page.waitForFunction(()=>document.querySelectorAll('.preview img').length===3&&[...document.querySelectorAll('.preview img')].every(img=>img.naturalWidth>0));
- assert.equal(await page.$$eval('.card',cards=>cards.length),3);
+ await page.waitForFunction(()=>document.querySelector('#pages img')?.naturalWidth>0);
+ assert.equal(await page.$$eval('.slot',buttons=>buttons.length),3);
  assert.equal(await page.$$eval('a',links=>links.length),0);
- assert.ok((await page.$eval('#times',el=>el.textContent)).includes('1:10 PM'));
+ assert.ok((await page.$eval('.times',el=>el.textContent)).includes('1:10 PM'));
+ for(const draw of manifest.draws){await page.click(`.slot[data-draw="${draw.id}"]`);await page.waitForFunction(()=>document.querySelector('#pages img')?.naturalWidth>0);assert.equal(await page.$eval('#number',el=>el.textContent),`${draw.result.firstPrize.series} ${draw.result.firstPrize.number}`);}
  await mkdir('test-artifacts',{recursive:true});await writeFile('test-artifacts/website.png',await page.screenshot({fullPage:true}));
- await page.click('.preview');await page.waitForFunction(()=>document.querySelector('#viewer').open);
+ await page.click('.sheet-button');await page.waitForFunction(()=>document.querySelector('#viewer').open);
  await page.waitForFunction(()=>document.querySelector('#full-pages img').naturalWidth>0);await page.keyboard.press('Escape');assert.equal(await page.$eval('#viewer',el=>el.open),false);
- await page.click('#refresh');await page.waitForFunction(()=>!document.querySelector('#refresh').disabled);assert.equal(await page.$$eval('.card',cards=>cards.length),3);
- mode='pending';await page.click('#refresh');await page.waitForFunction(()=>document.querySelector('[data-draw="DN"] .placeholder strong')?.textContent==='PDF not available yet');
- assert.equal(await page.$$eval('.preview img',images=>images.length),2);
- mode='ok';await page.click('#refresh');await page.waitForFunction(()=>document.querySelectorAll('.preview img').length===3);
+ await page.click('#refresh');await page.waitForFunction(()=>!document.querySelector('#refresh').disabled);assert.equal(await page.$$eval('.slot',buttons=>buttons.length),3);
+ await page.click('.slot[data-draw="DN"]');mode='pending';await page.click('#refresh');await page.waitForFunction(()=>document.querySelector('.placeholder strong')?.textContent==='PDF not available yet');
+ assert.equal(await page.$$eval('#pages img',images=>images.length),0);
+ mode='ok';await page.click('#refresh');await page.waitForFunction(()=>document.querySelector('#pages img')?.naturalWidth>0);
+ await page.select('#draw-select','MN');assert.equal(await page.$eval('.slot[data-draw="MN"]',el=>el.getAttribute('aria-pressed')),'true');await page.click('#previous');assert.equal(await page.$eval('#draw-select',el=>el.value),'EN');
  await page.setViewport({width:390,height:844});await writeFile('test-artifacts/mobile.png',await page.screenshot({fullPage:true}));
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
- mode='missing';await page.click('#refresh');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Showing the saved results.'));assert.equal(await page.$$eval('.preview img',images=>images.length),3);
- mode='invalid';await page.reload();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('result data is invalid'));assert.equal(await page.$$eval('.preview img',images=>images.length),0);
- assert.deepEqual(errors,[]);console.log('Browser check passed: three real PDFs, project paths, compact layout, mobile, zoom, pending messages, refresh and invalid data.');
+ mode='missing';await page.click('#refresh');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Showing the saved results.'));assert.equal(await page.$$eval('#pages img',images=>images.length),1);
+ mode='invalid';await page.reload();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('result data is invalid'));assert.equal(await page.$$eval('#pages img',images=>images.length),0);
+ assert.deepEqual(errors,[]);console.log('Browser check passed: three draw buttons, real first prizes, centered sheets, mobile, zoom, pending messages, refresh and invalid data.');
 }finally{if(browser)await browser.close();await new Promise(done=>server.close(done));}

@@ -5,6 +5,8 @@ import puppeteer from '@cloudflare/puppeteer/internal/puppeteer-core.js';
 import {renderPDF} from '../src/render.mjs';
 import {pollResults} from '../src/poll.mjs';
 import {publishPages} from './publish-pages.mjs';
+import {firstPrize} from '../src/prize.mjs';
+import {DRAWS} from '../src/draws.mjs';
 const cache=resolve('.result-cache'),output=resolve('.site');
 const storedPath=key=>{
  if(!/^latest(?:-(?:MN|DN|EN))?\.json$/.test(key)&&!/^results\/\d{4}-\d{2}-\d{2}\/(MN|DN|EN)\/(?:result\.json|(?:MN|DN|EN)\d{6}\.PDF|page-\d+\.png)$/.test(key))throw Error('Invalid storage key.');
@@ -32,6 +34,22 @@ const env={RESULTS,ASSETS:{async fetch(request){const path=new URL(request.url).
 async function render(pdf,env){
  const executablePath=process.env.CHROME_PATH||(process.platform==='win32'?'C:/Program Files/Google/Chrome/Application/chrome.exe':'/usr/bin/google-chrome');await access(executablePath);
  return renderPDF(pdf,env,{launch:()=>puppeteer.launch({executablePath,headless:true,args:['--no-sandbox','--disable-gpu','--disable-gpu-sandbox','--disable-software-rasterizer'],userDataDir:resolve('test-artifacts',`pages-chrome-${randomUUID()}`)})});
+}
+// Upgrade previous saved manifests using their cached PDF, without source hits.
+for(const draw of DRAWS){
+ const saved=await RESULTS.get(`latest-${draw.id}.json`);if(!saved)continue;
+ const result=await saved.json();if('firstPrize' in result&&result.imageFormat==='trimmed-v1')continue;
+ const key=`results/${result.date}/${draw.id}/${result.filename}`;
+ let pdf=await RESULTS.get(key);
+ if(!pdf&&/^(MN|DN|EN)\d{6}\.PDF$/.test(result.filename)){
+  try{await RESULTS.put(key,await readFile(resolve(cache,'results',result.date,result.filename)));pdf=await RESULTS.get(key);}catch(error){if(error.code!=='ENOENT')throw error;}
+ }
+ if(pdf){
+  const images=await render(await pdf.arrayBuffer(),env);result.firstPrize=firstPrize(images);result.imageFormat='trimmed-v1';result.pages=[];
+  for(const [index,image] of images.entries()){const imageKey=`results/${result.date}/${draw.id}/page-${index+1}.png`;await RESULTS.put(imageKey,image.bytes);result.pages.push({src:`/images/${imageKey}`,width:image.width,height:image.height});}
+ }else result.firstPrize??=null;
+ await RESULTS.put(`latest-${draw.id}.json`,JSON.stringify(result));
+ await RESULTS.put(`results/${result.date}/${draw.id}/result.json`,JSON.stringify(result));
 }
 await pollResults(env,render,{once:!process.argv.includes('--watch'),publish:async(manifest)=>{
  const result=structuredClone(manifest);

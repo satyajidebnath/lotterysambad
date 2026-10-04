@@ -10,9 +10,13 @@ starts at **1:10 PM (MN), 6:10 PM (DN), and 8:10 PM (EN), all IST**, on pushes t
 while running, stops contacting a draw's source once its PDF has been saved,
 and stops retrying that day's missing results at midnight IST.
 
-The compact website shows all three draws, preserves each previous result, displays
-a waiting message for missing PDFs, and lets visitors enlarge an image without
-opening the original PDF. It refreshes result metadata every ten seconds.
+The website uses a red header, green 1 PM / 6 PM / 8 PM buttons, a first-prize
+number panel, and a centered result sheet. The latest available draw is selected
+initially; buttons, arrows, and the draw selector switch between all three draws.
+Winning numbers come from each original PDF's text. Blank PDF margins are removed
+from the displayed sheet. Previous results stay available, missing PDFs show a
+waiting message, and images can be enlarged without an original-PDF link.
+The website refreshes result metadata every ten seconds.
 
 GitHub schedules can start late. Hosted jobs cannot run for more than six hours,
 so each polling run lasts at most 330 minutes; hourly recovery runs resume polling

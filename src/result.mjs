@@ -1,4 +1,5 @@
 import {DRAWS,indiaDateParts} from './draws.mjs';
+import {firstPrize} from './prize.mjs';
 export function todayResult(date=new Date(),draw='MN') {
  if(!DRAWS.some(item=>item.id===draw))throw Error('Unknown draw.');
  const parts=indiaDateParts(date),filename=`${draw}${parts.stamp}.PDF`;
@@ -58,7 +59,7 @@ export async function updateResult(env,render,date=new Date(),draw='MN') {
   await env.RESULTS.put(imageKey,image.bytes,{httpMetadata:{contentType:'image/png',cacheControl:'public, max-age=31536000, immutable'}});
   pages.push({src:`/images/${imageKey}`,width:image.width,height:image.height});
  }
- const result={...today,pages,updatedAt:new Date().toISOString()};
+ const result={...today,pages,imageFormat:'trimmed-v1',firstPrize:firstPrize(images),updatedAt:new Date().toISOString()};
  // Publish only after every image is stored.
  await env.RESULTS.put(key,JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
  await env.RESULTS.put(`latest-${draw}.json`,JSON.stringify(result),{httpMetadata:{contentType:'application/json'}});
