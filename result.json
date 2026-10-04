@@ -15,17 +15,13 @@
         "pages": [
           {
             "src": "images/results/2026-10-04/MN/page-1.png",
-            "width": 1204,
-            "height": 1681
+            "width": 1273,
+            "height": 1800
           }
         ],
         "updatedAt": "2026-10-04T16:10:43.844Z",
         "draw": "MN",
-        "firstPrize": {
-          "series": "46A",
-          "number": "59993"
-        },
-        "imageFormat": "trimmed-v1"
+        "firstPrize": null
       }
     },
     {
@@ -42,16 +38,12 @@
         "pages": [
           {
             "src": "images/results/2026-10-04/DN/page-1.png",
-            "width": 1219,
-            "height": 1651
+            "width": 1273,
+            "height": 1800
           }
         ],
         "updatedAt": "2026-10-04T16:54:51.959Z",
-        "firstPrize": {
-          "series": "91L",
-          "number": "22273"
-        },
-        "imageFormat": "trimmed-v1"
+        "firstPrize": null
       }
     },
     {
@@ -68,18 +60,14 @@
         "pages": [
           {
             "src": "images/results/2026-10-04/EN/page-1.png",
-            "width": 1219,
-            "height": 1667
+            "width": 1273,
+            "height": 1800
           }
         ],
         "updatedAt": "2026-10-04T16:54:55.375Z",
-        "firstPrize": {
-          "series": "72A",
-          "number": "07421"
-        },
-        "imageFormat": "trimmed-v1"
+        "firstPrize": null
       }
     }
   ],
-  "updatedAt": "2026-10-04T17:40:05.530Z"
+  "updatedAt": "2026-10-04T17:42:40.042Z"
 }
