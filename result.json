@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "timeZone": "Asia/Kolkata",
   "draws": [
     {
@@ -7,7 +7,7 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-08",
         "draw": "MN",
@@ -33,7 +33,7 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-08",
         "draw": "DN",
@@ -59,7 +59,7 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-08",
         "draw": "EN",
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-08T14:52:53.091Z"
+  "updatedAt": "2026-10-08T18:59:39.881Z"
 }
