@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-08",
+        "date": "2026-10-09",
         "draw": "EN",
-        "filename": "EN081026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN081026.PDF",
+        "filename": "EN091026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN091026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-08/EN/page-1.png",
-            "width": 1219,
-            "height": 1667
+            "src": "images/results/2026-10-09/EN/page-1.png",
+            "width": 1204,
+            "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "99K",
-          "number": "38644"
+          "series": "71D",
+          "number": "18217"
         },
-        "updatedAt": "2026-10-08T14:53:11.415Z"
+        "updatedAt": "2026-10-09T15:32:10.669Z"
       }
     }
   ],
-  "updatedAt": "2026-10-09T14:37:08.472Z"
+  "updatedAt": "2026-10-09T15:32:00.457Z"
 }
