@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-08",
+        "date": "2026-10-09",
         "draw": "MN",
-        "filename": "MN081026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN081026.PDF",
+        "filename": "MN091026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN091026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-08/MN/page-1.png",
-            "width": 1204,
-            "height": 1681
+            "src": "images/results/2026-10-09/MN/page-1.png",
+            "width": 1219,
+            "height": 1660
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "53K",
-          "number": "43097"
+          "series": "74D",
+          "number": "06139"
         },
-        "updatedAt": "2026-10-08T14:53:06.515Z"
+        "updatedAt": "2026-10-09T14:37:11.531Z"
       }
     },
     {
@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-08",
+        "date": "2026-10-09",
         "draw": "DN",
-        "filename": "DN081026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN081026.PDF",
+        "filename": "DN091026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN091026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-08/DN/page-1.png",
+            "src": "images/results/2026-10-09/DN/page-1.png",
             "width": 1219,
             "height": 1651
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "90C",
-          "number": "93018"
+          "series": "88J",
+          "number": "15035"
         },
-        "updatedAt": "2026-10-08T14:53:08.849Z"
+        "updatedAt": "2026-10-09T14:37:13.660Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-08T18:59:39.881Z"
+  "updatedAt": "2026-10-09T14:37:08.472Z"
 }
