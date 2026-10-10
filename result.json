@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-09",
+        "date": "2026-10-10",
         "draw": "MN",
-        "filename": "MN091026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN091026.PDF",
+        "filename": "MN101026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN101026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-09/MN/page-1.png",
+            "src": "images/results/2026-10-10/MN/page-1.png",
             "width": 1219,
             "height": 1660
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "74D",
-          "number": "06139"
+          "series": "63B",
+          "number": "56525"
         },
-        "updatedAt": "2026-10-09T14:37:11.531Z"
+        "updatedAt": "2026-10-10T13:57:34.378Z"
       }
     },
     {
@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-09",
+        "date": "2026-10-10",
         "draw": "DN",
-        "filename": "DN091026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN091026.PDF",
+        "filename": "DN101026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN101026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-09/DN/page-1.png",
+            "src": "images/results/2026-10-10/DN/page-1.png",
             "width": 1219,
-            "height": 1651
+            "height": 1691
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "88J",
-          "number": "15035"
+          "series": "96H",
+          "number": "76259"
         },
-        "updatedAt": "2026-10-09T14:37:13.660Z"
+        "updatedAt": "2026-10-10T13:57:36.552Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-09T19:45:32.575Z"
+  "updatedAt": "2026-10-10T13:57:25.177Z"
 }
