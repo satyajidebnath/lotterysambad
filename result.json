@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-10",
+        "date": "2026-10-11",
         "draw": "EN",
-        "filename": "EN101026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN101026.PDF",
+        "filename": "EN111026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN111026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-10/EN/page-1.png",
-            "width": 1204,
-            "height": 1687
+            "src": "images/results/2026-10-11/EN/page-1.png",
+            "width": 1219,
+            "height": 1667
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "46G",
-          "number": "52975"
+          "series": "48K",
+          "number": "36340"
         },
-        "updatedAt": "2026-10-10T14:40:34.847Z"
+        "updatedAt": "2026-10-11T15:03:14.254Z"
       }
     }
   ],
-  "updatedAt": "2026-10-11T14:20:20.503Z"
+  "updatedAt": "2026-10-11T15:03:04.512Z"
 }
