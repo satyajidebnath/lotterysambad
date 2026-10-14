@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-13",
+        "date": "2026-10-14",
         "draw": "EN",
-        "filename": "EN131026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN131026.PDF",
+        "filename": "EN141026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN141026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-13/EN/page-1.png",
-            "width": 1204,
-            "height": 1687
+            "src": "images/results/2026-10-14/EN/page-1.png",
+            "width": 1219,
+            "height": 1667
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "71J",
-          "number": "15373"
+          "series": "49A",
+          "number": "80944"
         },
-        "updatedAt": "2026-10-13T15:14:59.306Z"
+        "updatedAt": "2026-10-14T17:34:19.009Z"
       }
     }
   ],
-  "updatedAt": "2026-10-14T13:03:11.861Z"
+  "updatedAt": "2026-10-14T17:34:15.824Z"
 }
