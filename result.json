@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "draw": "MN",
-        "filename": "MN141026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN141026.PDF",
+        "filename": "MN151026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN151026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-14/MN/page-1.png",
-            "width": 1204,
-            "height": 1681
+            "src": "images/results/2026-10-15/MN/page-1.png",
+            "width": 1219,
+            "height": 1660
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "64D",
-          "number": "79258"
+          "series": "95E",
+          "number": "75331"
         },
-        "updatedAt": "2026-10-14T13:03:14.428Z"
+        "updatedAt": "2026-10-15T12:50:10.962Z"
       }
     },
     {
@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "draw": "DN",
-        "filename": "DN141026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN141026.PDF",
+        "filename": "DN151026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN151026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-14/DN/page-1.png",
+            "src": "images/results/2026-10-15/DN/page-1.png",
             "width": 1219,
-            "height": 1691
+            "height": 1651
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "86G",
-          "number": "45286"
+          "series": "92G",
+          "number": "91256"
         },
-        "updatedAt": "2026-10-14T13:03:16.488Z"
+        "updatedAt": "2026-10-15T12:50:12.615Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-14T18:53:30.128Z"
+  "updatedAt": "2026-10-15T12:49:59.904Z"
 }
