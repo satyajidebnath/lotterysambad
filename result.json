@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-15",
+        "date": "2026-10-16",
         "draw": "EN",
-        "filename": "EN151026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN151026.PDF",
+        "filename": "EN161026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN161026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-15/EN/page-1.png",
+            "src": "images/results/2026-10-16/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "96E",
-          "number": "14354"
+          "series": "46J",
+          "number": "20303"
         },
-        "updatedAt": "2026-10-15T17:19:02.935Z"
+        "updatedAt": "2026-10-16T16:54:56.762Z"
       }
     }
   ],
-  "updatedAt": "2026-10-16T12:44:02.539Z"
+  "updatedAt": "2026-10-16T16:54:43.645Z"
 }
