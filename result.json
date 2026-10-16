@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-15",
+        "date": "2026-10-16",
         "draw": "MN",
-        "filename": "MN151026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN151026.PDF",
+        "filename": "MN161026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN161026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-15/MN/page-1.png",
-            "width": 1219,
-            "height": 1660
+            "src": "images/results/2026-10-16/MN/page-1.png",
+            "width": 1204,
+            "height": 1681
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "95E",
-          "number": "75331"
+          "series": "70B",
+          "number": "30467"
         },
-        "updatedAt": "2026-10-15T12:50:10.962Z"
+        "updatedAt": "2026-10-16T12:42:00.969Z"
       }
     },
     {
@@ -33,7 +33,7 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "pending",
       "result": {
         "date": "2026-10-15",
         "draw": "DN",
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-15T18:39:31.691Z"
+  "updatedAt": "2026-10-16T12:41:48.720Z"
 }
