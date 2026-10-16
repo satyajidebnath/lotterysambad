@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "pending",
+      "status": "ready",
       "result": {
-        "date": "2026-10-15",
+        "date": "2026-10-16",
         "draw": "DN",
-        "filename": "DN151026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN151026.PDF",
+        "filename": "DN161026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN161026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-15/DN/page-1.png",
+            "src": "images/results/2026-10-16/DN/page-1.png",
             "width": 1219,
-            "height": 1651
+            "height": 1691
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "92G",
-          "number": "91256"
+          "series": "93A",
+          "number": "43317"
         },
-        "updatedAt": "2026-10-15T12:50:12.615Z"
+        "updatedAt": "2026-10-16T12:44:04.819Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-16T12:41:48.720Z"
+  "updatedAt": "2026-10-16T12:44:02.539Z"
 }
