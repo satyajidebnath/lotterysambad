@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-16",
+        "date": "2026-10-17",
         "draw": "DN",
-        "filename": "DN161026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN161026.PDF",
+        "filename": "DN171026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN171026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-16/DN/page-1.png",
+            "src": "images/results/2026-10-17/DN/page-1.png",
             "width": 1219,
             "height": 1691
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "93A",
-          "number": "43317"
+          "series": "92H",
+          "number": "78866"
         },
-        "updatedAt": "2026-10-16T12:44:04.819Z"
+        "updatedAt": "2026-10-17T15:54:20.740Z"
       }
     },
     {
@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-16",
+        "date": "2026-10-17",
         "draw": "EN",
-        "filename": "EN161026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN161026.PDF",
+        "filename": "EN171026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN171026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-16/EN/page-1.png",
+            "src": "images/results/2026-10-17/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "46J",
-          "number": "20303"
+          "series": "58A",
+          "number": "27174"
         },
-        "updatedAt": "2026-10-16T16:54:56.762Z"
+        "updatedAt": "2026-10-17T15:54:22.521Z"
       }
     }
   ],
-  "updatedAt": "2026-10-17T11:44:18.877Z"
+  "updatedAt": "2026-10-17T15:54:08.920Z"
 }
