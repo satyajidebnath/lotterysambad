@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "timeZone": "Asia/Kolkata",
   "draws": [
     {
@@ -9,23 +9,23 @@
       "downloadTime": "13:10",
       "status": "ready",
       "result": {
-        "date": "2026-10-16",
+        "date": "2026-10-17",
         "draw": "MN",
-        "filename": "MN161026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN161026.PDF",
+        "filename": "MN171026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN171026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-16/MN/page-1.png",
-            "width": 1204,
-            "height": 1681
+            "src": "images/results/2026-10-17/MN/page-1.png",
+            "width": 1219,
+            "height": 1660
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "70B",
-          "number": "30467"
+          "series": "39C",
+          "number": "06366"
         },
-        "updatedAt": "2026-10-16T12:42:00.969Z"
+        "updatedAt": "2026-10-17T11:44:29.295Z"
       }
     },
     {
@@ -33,7 +33,7 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-16",
         "draw": "DN",
@@ -59,7 +59,7 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "ready",
+      "status": "scheduled",
       "result": {
         "date": "2026-10-16",
         "draw": "EN",
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-16T16:54:43.645Z"
+  "updatedAt": "2026-10-17T11:44:18.877Z"
 }
