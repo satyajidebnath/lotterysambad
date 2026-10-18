@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-17",
+        "date": "2026-10-18",
         "draw": "EN",
-        "filename": "EN171026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN171026.PDF",
+        "filename": "EN181026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN181026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-17/EN/page-1.png",
+            "src": "images/results/2026-10-18/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "58A",
-          "number": "27174"
+          "series": "37K",
+          "number": "90889"
         },
-        "updatedAt": "2026-10-17T15:54:22.521Z"
+        "updatedAt": "2026-10-18T16:06:56.899Z"
       }
     }
   ],
-  "updatedAt": "2026-10-18T12:46:13.547Z"
+  "updatedAt": "2026-10-18T16:06:46.543Z"
 }
