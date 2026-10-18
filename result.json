@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-17",
+        "date": "2026-10-18",
         "draw": "MN",
-        "filename": "MN171026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN171026.PDF",
+        "filename": "MN181026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN181026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-17/MN/page-1.png",
-            "width": 1219,
-            "height": 1660
+            "src": "images/results/2026-10-18/MN/page-1.png",
+            "width": 1204,
+            "height": 1681
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "39C",
-          "number": "06366"
+          "series": "74D",
+          "number": "70698"
         },
-        "updatedAt": "2026-10-17T11:44:29.295Z"
+        "updatedAt": "2026-10-18T12:10:33.935Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-17T18:47:35.184Z"
+  "updatedAt": "2026-10-18T12:10:31.183Z"
 }
