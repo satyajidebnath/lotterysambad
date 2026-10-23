@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "draw": "EN",
-        "filename": "EN221026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN221026.PDF",
+        "filename": "EN231026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN231026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-22/EN/page-1.png",
-            "width": 1219,
-            "height": 1667
+            "src": "images/results/2026-10-23/EN/page-1.png",
+            "width": 1204,
+            "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "60G",
-          "number": "05986"
+          "series": "63B",
+          "number": "87343"
         },
-        "updatedAt": "2026-10-22T17:34:53.049Z"
+        "updatedAt": "2026-10-23T17:24:21.129Z"
       }
     }
   ],
-  "updatedAt": "2026-10-23T12:50:16.729Z"
+  "updatedAt": "2026-10-23T17:24:11.345Z"
 }
