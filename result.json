@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-23",
+        "date": "2026-10-24",
         "draw": "DN",
-        "filename": "DN231026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN231026.PDF",
+        "filename": "DN241026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN241026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-23/DN/page-1.png",
+            "src": "images/results/2026-10-24/DN/page-1.png",
             "width": 1219,
             "height": 1651
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "85D",
-          "number": "02475"
+          "series": "84K",
+          "number": "84095"
         },
-        "updatedAt": "2026-10-23T12:50:31.013Z"
+        "updatedAt": "2026-10-24T12:53:58.295Z"
       }
     },
     {
@@ -81,5 +81,5 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T12:12:07.979Z"
+  "updatedAt": "2026-10-24T12:53:54.484Z"
 }
