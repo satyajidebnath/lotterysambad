@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-24",
+        "date": "2026-10-25",
         "draw": "EN",
-        "filename": "EN241026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN241026.PDF",
+        "filename": "EN251026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN251026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-24/EN/page-1.png",
+            "src": "images/results/2026-10-25/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "90K",
-          "number": "65851"
+          "series": "77C",
+          "number": "17907"
         },
-        "updatedAt": "2026-10-24T16:12:57.926Z"
+        "updatedAt": "2026-10-25T16:46:59.219Z"
       }
     }
   ],
-  "updatedAt": "2026-10-25T12:45:22.674Z"
+  "updatedAt": "2026-10-25T16:46:42.578Z"
 }
