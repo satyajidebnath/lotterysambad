@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-25",
+        "date": "2026-10-26",
         "draw": "EN",
-        "filename": "EN251026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN251026.PDF",
+        "filename": "EN261026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN261026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-25/EN/page-1.png",
+            "src": "images/results/2026-10-26/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "77C",
-          "number": "17907"
+          "series": "39A",
+          "number": "45924"
         },
-        "updatedAt": "2026-10-25T16:46:59.219Z"
+        "updatedAt": "2026-10-26T15:26:15.248Z"
       }
     }
   ],
-  "updatedAt": "2026-10-26T14:31:28.410Z"
+  "updatedAt": "2026-10-26T15:26:04.875Z"
 }
