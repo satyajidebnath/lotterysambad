@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "draw": "EN",
-        "filename": "EN281026.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN281026.PDF",
+        "filename": "EN291026.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN291026.PDF",
         "pages": [
           {
-            "src": "images/results/2026-10-28/EN/page-1.png",
-            "width": 1219,
-            "height": 1667
+            "src": "images/results/2026-10-29/EN/page-1.png",
+            "width": 1204,
+            "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "58C",
-          "number": "53977"
+          "series": "43C",
+          "number": "28417"
         },
-        "updatedAt": "2026-10-28T15:23:44.712Z"
+        "updatedAt": "2026-10-29T15:29:51.200Z"
       }
     }
   ],
-  "updatedAt": "2026-10-29T14:37:42.403Z"
+  "updatedAt": "2026-10-29T15:29:30.347Z"
 }
