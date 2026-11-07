@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "draw": "EN",
-        "filename": "EN061126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN061126.PDF",
+        "filename": "EN071126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN071126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-06/EN/page-1.png",
+            "src": "images/results/2026-11-07/EN/page-1.png",
             "width": 1219,
             "height": 1667
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "51K",
-          "number": "81306"
+          "series": "91J",
+          "number": "93276"
         },
-        "updatedAt": "2026-11-06T15:20:44.875Z"
+        "updatedAt": "2026-11-07T15:04:16.498Z"
       }
     }
   ],
-  "updatedAt": "2026-11-07T14:18:28.067Z"
+  "updatedAt": "2026-11-07T15:04:06.189Z"
 }
