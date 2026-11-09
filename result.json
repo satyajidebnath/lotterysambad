@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "pending",
+      "status": "ready",
       "result": {
-        "date": "2026-11-08",
+        "date": "2026-11-09",
         "draw": "EN",
-        "filename": "EN081126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN081126.PDF",
+        "filename": "EN091126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN091126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-08/EN/page-1.png",
+            "src": "images/results/2026-11-09/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "80C",
-          "number": "47434"
+          "series": "82E",
+          "number": "50561"
         },
-        "updatedAt": "2026-11-08T15:32:27.038Z"
+        "updatedAt": "2026-11-09T17:48:27.281Z"
       }
     }
   ],
-  "updatedAt": "2026-11-09T17:46:29.623Z"
+  "updatedAt": "2026-11-09T17:48:21.190Z"
 }
