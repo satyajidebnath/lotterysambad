@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-11-13",
+        "date": "2026-11-14",
         "draw": "EN",
-        "filename": "EN131126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN131126.PDF",
+        "filename": "EN141126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN141126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-13/EN/page-1.png",
+            "src": "images/results/2026-11-14/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "57G",
-          "number": "69303"
+          "series": "98K",
+          "number": "60860"
         },
-        "updatedAt": "2026-11-13T15:39:59.314Z"
+        "updatedAt": "2026-11-14T15:18:42.668Z"
       }
     }
   ],
-  "updatedAt": "2026-11-14T14:26:45.494Z"
+  "updatedAt": "2026-11-14T15:18:26.289Z"
 }
