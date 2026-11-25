@@ -7,25 +7,25 @@
       "label": "Morning",
       "drawTime": "13:00",
       "downloadTime": "13:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-11-22",
+        "date": "2026-11-25",
         "draw": "MN",
-        "filename": "MN221126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN221126.PDF",
+        "filename": "MN251126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=MN251126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-22/MN/page-1.png",
+            "src": "images/results/2026-11-25/MN/page-1.png",
             "width": 1204,
             "height": 1681
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "98B",
-          "number": "74609"
+          "series": "50H",
+          "number": "84695"
         },
-        "updatedAt": "2026-11-22T15:37:52.041Z"
+        "updatedAt": "2026-11-25T18:09:25.459Z"
       }
     },
     {
@@ -33,25 +33,25 @@
       "label": "Evening",
       "drawTime": "18:00",
       "downloadTime": "18:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-11-22",
+        "date": "2026-11-25",
         "draw": "DN",
-        "filename": "DN221126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN221126.PDF",
+        "filename": "DN251126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=DN251126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-22/DN/page-1.png",
+            "src": "images/results/2026-11-25/DN/page-1.png",
             "width": 1219,
             "height": 1651
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "87D",
-          "number": "01948"
+          "series": "94E",
+          "number": "89457"
         },
-        "updatedAt": "2026-11-22T15:37:54.647Z"
+        "updatedAt": "2026-11-25T18:09:27.439Z"
       }
     },
     {
@@ -59,27 +59,27 @@
       "label": "Night",
       "drawTime": "20:00",
       "downloadTime": "20:10",
-      "status": "scheduled",
+      "status": "ready",
       "result": {
-        "date": "2026-11-22",
+        "date": "2026-11-25",
         "draw": "EN",
-        "filename": "EN221126.PDF",
-        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN221126.PDF",
+        "filename": "EN251126.PDF",
+        "source": "https://www.lotterysambad.com/fetchtoday.php?filename=EN251126.PDF",
         "pages": [
           {
-            "src": "images/results/2026-11-22/EN/page-1.png",
+            "src": "images/results/2026-11-25/EN/page-1.png",
             "width": 1204,
             "height": 1687
           }
         ],
         "imageFormat": "trimmed-v1",
         "firstPrize": {
-          "series": "66K",
-          "number": "83114"
+          "series": "74L",
+          "number": "48815"
         },
-        "updatedAt": "2026-11-22T15:37:57.257Z"
+        "updatedAt": "2026-11-25T18:09:29.385Z"
       }
     }
   ],
-  "updatedAt": "2026-11-24T19:03:17.315Z"
+  "updatedAt": "2026-11-25T18:09:15.648Z"
 }
